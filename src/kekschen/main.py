@@ -1,8 +1,12 @@
-import asyncio
+import threading
 
-def main():
+from .api.__init__ import endpoints_main
+
+def main() -> None:
+    t = threading.Thread(target=endpoints_main, daemon=False)
+    t.start()
     print("Hello from kekschen!")
 
-async def api():
-    from .api.__init__ import main
-    await main()
+def api() -> None:
+    t = threading.Thread(target=endpoints_main, daemon=False)
+    t.start()
