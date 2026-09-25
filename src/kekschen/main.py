@@ -23,6 +23,10 @@ def api() -> None:
     global api_thread
     if api_thread and api_thread.is_alive():
         print("API is already running.")
-    else:
-        api_thread = threading.Thread(target=endpoints_main, daemon=True)
-        api_thread.start()
+        return
+    print("Starting API...")
+    api_thread = threading.Thread(
+        target=endpoints_main,
+        daemon=True
+    )
+    api_thread.start()

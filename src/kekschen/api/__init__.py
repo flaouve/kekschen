@@ -8,7 +8,7 @@ def endpoints_main() -> None:
         kwargs={
             "uvicorn_reload": False
         },
-        daemon=False)
+        daemon=True)
     t.start()
 
 def server_start(uvicorn_reload: bool=False) -> None:
@@ -18,7 +18,7 @@ def server_start(uvicorn_reload: bool=False) -> None:
             host="127.0.0.1", 
             port=8000,
             loop="asyncio",
-            log_level="error"
+            log_level="info"
         )
     uvicorn.run(
         "kekschen.api.endpoints:app", 
