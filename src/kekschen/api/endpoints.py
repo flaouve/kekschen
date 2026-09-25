@@ -5,7 +5,7 @@ app = FastAPI()
 
 @app.get("/")
 async def read_root():
-    return {"Hello": "Good", "Day": "Today"}
+    return {"Hello": "Good Day", "Today": "Is a Great Day"}
 
 @app.get("/users/{user_id}")
 async def read_user(user_id: int):

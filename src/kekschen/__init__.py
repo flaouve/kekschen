@@ -3,5 +3,5 @@ def main() -> None:
     main()
 
 def api() -> None:
-    from .api.__init__ import main
-    main()
+    from .api.__init__ import endpoints_main
+    endpoints_main()

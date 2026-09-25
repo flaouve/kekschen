@@ -2,11 +2,27 @@ import threading
 
 from .api.__init__ import endpoints_main
 
+api_thread = None
+
 def main() -> None:
-    t = threading.Thread(target=endpoints_main, daemon=False)
-    t.start()
-    print("Hello from kekschen!")
+    menu()
+
+def menu():
+    while True:
+        print("1. Start API")
+        print("2. Exit")
+        choice = input("Enter your choice: ")
+        if choice == "1" or choice.lower() == "start api" or choice.lower() == "api" or choice.lower() == "start":
+            api()
+        elif choice == "2" or choice.lower() == "exit" or choice.lower() == "quit" or choice.lower() == "close" or choice.lower() == "stop" or choice.lower() == "end":
+            break
+        else:
+            print("Invalid choice. Please try again.")
 
 def api() -> None:
-    t = threading.Thread(target=endpoints_main, daemon=False)
-    t.start()
+    global api_thread
+    if api_thread and api_thread.is_alive():
+        print("API is already running.")
+    else:
+        api_thread = threading.Thread(target=endpoints_main, daemon=True)
+        api_thread.start()
