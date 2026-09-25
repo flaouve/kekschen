@@ -5,13 +5,8 @@ app = FastAPI()
 
 @app.get("/")
 async def read_root():
-    return {"Hello": "World"}
+    return {"Hello": "Good", "Day": "Today"}
 
 @app.get("/users/{user_id}")
 async def read_user(user_id: int):
     return {"user_id": user_id}
-
-
-@app.get("/items/{item_id}")
-async def read_item(item_id: int, q: str | None = None):
-    return {"item_id": item_id, "q": q}
