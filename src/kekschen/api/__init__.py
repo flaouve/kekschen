@@ -20,15 +20,16 @@ def server_start(uvicorn_reload: bool=False) -> None:
             loop="asyncio",
             log_level="info"
         )
-    uvicorn.run(
-        "kekschen.api.endpoints:app", 
-        host="0.0.0.0", 
-        port=8000, 
-        reload=True,
-        loop="asyncio"
-    )
+
+    else:
+        uvicorn.run(
+            "kekschen.api.endpoints:app", 
+            host="0.0.0.0", 
+            port=8000, 
+            reload=True,
+            loop="asyncio"
+        )
+
 if __name__ == "__main__":
     server_start(uvicorn_reload=True)
     
-
-
