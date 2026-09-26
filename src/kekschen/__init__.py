@@ -13,3 +13,7 @@ def db() -> None:
 def core() -> None:
     from .core.__init__ import main
     main()
+
+def config() -> None:
+    from .config.config import type_control
+    type_control()
