@@ -2,7 +2,13 @@ import threading
 
 import uvicorn
 
-from ..config.config import FASTAPI_HOST, FASTAPI_LOG_LEVEL, FASTAPI_PORT, FASTAPI_LOOP, FASTAPI_RELOAD
+from ..config.config import ( 
+    FASTAPI_HOST, 
+    FASTAPI_LOG_LEVEL, 
+    FASTAPI_PORT, 
+    FASTAPI_LOOP, 
+    FASTAPI_RELOAD
+)
 
 def endpoints_main() -> None:
     t = threading.Thread(
@@ -10,17 +16,15 @@ def endpoints_main() -> None:
         daemon=True)
     t.start()
 
-def server_start() -> None:
+def server_start(reload: bool = FASTAPI_RELOAD) -> None:
     uvicorn.run(
         "kekschen.api.endpoints:app", 
         host=FASTAPI_HOST, 
         port=FASTAPI_PORT,
         loop=FASTAPI_LOOP,
         log_level=FASTAPI_LOG_LEVEL,
-        reload=FASTAPI_RELOAD
+        reload=reload
     )
 
 if __name__ == "__main__":
-    FASTAPI_RELOAD = True
-    server_start()
-    
+    server_start(reload=True)
