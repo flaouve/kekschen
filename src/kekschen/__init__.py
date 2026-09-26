@@ -7,9 +7,9 @@ def api() -> None:
     server_start()
 
 def db() -> None:
-    from .db.__init__ import main
+    from .database.__init__ import main
     main()
 
-def mechanic() -> None:
-    from .mechanic.__init__ import main
+def core() -> None:
+    from .core.__init__ import main
     main()
