@@ -158,6 +158,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+src/kekschen/config/env.py
 
 # Spyder project settings
 .spyderproject
